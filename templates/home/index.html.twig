@@ -3,6 +3,11 @@
 {% block title %}Leave us a message{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('message') %}
+        <div>
+            <div>{{ message }}</div>
+        </div>
+    {% endfor %}
     <h1>Are you facing any issues 😔 ?</h1>
 
     {{ form_start(form) }}

@@ -29,9 +29,15 @@ class Country
      */
     private $cities;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Issue::class, mappedBy="country", orphanRemoval=true)
+     */
+    private $issues;
+
     public function __construct()
     {
         $this->cities = new ArrayCollection();
+        $this->issues = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,36 @@ class Country
             // set the owning side to null (unless already changed)
             if ($city->getCountry() === $this) {
                 $city->setCountry(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Issue[]
+     */
+    public function getIssues(): Collection
+    {
+        return $this->issues;
+    }
+
+    public function addIssue(Issue $issue): self
+    {
+        if (!$this->issues->contains($issue)) {
+            $this->issues[] = $issue;
+            $issue->setCountry($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIssue(Issue $issue): self
+    {
+        if ($this->issues->removeElement($issue)) {
+            // set the owning side to null (unless already changed)
+            if ($issue->getCountry() === $this) {
+                $issue->setCountry(null);
             }
         }
 
