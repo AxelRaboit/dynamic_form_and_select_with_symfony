@@ -32,6 +32,7 @@ class IssuesType extends AbstractType
                 'constraints' => new NotBlank(['message' => 'Please enter your name.'])
             ])
             ->add('country', EntityType::class, [
+                'label' => 'Pays',
                 'constraints' => new NotBlank(['message' => 'Please choose a country.']),
                 'placeholder' => 'Choisissez un pays',
                 'class' => Country::class,
@@ -53,6 +54,7 @@ class IssuesType extends AbstractType
                 }
             ]) */
             ->add('city', ChoiceType::class, [
+                'label' => 'Ville',
                 'placeholder' => 'Ville (Choisir un pays)',
                 'required' => false,
                 'disabled' => true
