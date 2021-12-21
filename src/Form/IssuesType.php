@@ -53,7 +53,7 @@ class IssuesType extends AbstractType
                 }
             ]) */
             ->add('city', ChoiceType::class, [
-                'placeholder' => 'Ville (Choisir un pays',
+                'placeholder' => 'Ville (Choisir un pays)',
                 'required' => false,
             ])
             ->add('message', TextareaType::class, [
@@ -77,7 +77,7 @@ class IssuesType extends AbstractType
                 'class' => City::class,
                 'choices' => $cities,
                 'choice_label' => 'name',
-                'placeholder' => 'Choisissez une ville',
+                'placeholder' => 'Ville',
                 'required' => false
             ]);
         };
