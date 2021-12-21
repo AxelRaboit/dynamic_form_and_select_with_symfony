@@ -55,6 +55,7 @@ class IssuesType extends AbstractType
             ->add('city', ChoiceType::class, [
                 'placeholder' => 'Ville (Choisir un pays)',
                 'required' => false,
+                'disabled' => true
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
